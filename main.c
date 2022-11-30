@@ -7,6 +7,7 @@
 
 #ifndef _BOOLEAN_H_
 #define _BOOLEAN_H_
+jjhkhkj
 
 typedef enum{
 	false,
@@ -37,7 +38,7 @@ char ** tela;
 int pontos = 0;
 int dificuldade;
 
-/*	FUNÇÕES DE TELA	 */
+/*	FUNï¿½ï¿½ES DE TELA	 */
 
 char** tela_ini(){
 	int i;
@@ -91,7 +92,7 @@ void plot_snake(char** t, snake* s){
 }
 
 
-/*		FUNÇÕES DA COBRA	*/
+/*		FUNï¿½ï¿½ES DA COBRA	*/
 void snake_inicia(int tam){
 
 	int i, count;
@@ -118,7 +119,7 @@ void snake_libera(){
 	}while(aux != cobra);
 }
 
-//função que movimentará a cobra
+//funï¿½ï¿½o que movimentarï¿½ a cobra
 void mov_cobra(Direcao d){
 
 	snake* i = cobra->prev;
@@ -149,7 +150,7 @@ void mov_cobra(Direcao d){
 /*JOGO*/
 
 void gera_comida(){
-	int n_livre = 0; //armazena quantos espaços livres estão disponíveis
+	int n_livre = 0; //armazena quantos espaï¿½os livres estï¿½o disponï¿½veis
 	int i, j;
 
 	int *ys = (int*)malloc(sizeof(int)*altura*largura);
@@ -318,7 +319,7 @@ int main(int argc, char *argv[]){
 		//movimenta a cobra
 		mov_cobra(dir);
 
-		//condições de "morte"
+		//condiï¿½ï¿½es de "morte"
 		game_conditions();
 
 		//desenha a moldura
