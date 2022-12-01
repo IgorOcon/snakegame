@@ -323,7 +323,7 @@ int main(int argc, char *argv[]){
 		}
 
 		//movimenta a cobra
-		rep->dir = dir;
+		//rep->dir = dir;
 		mov_cobra(dir);
 
 		//condicoes de "morte"
@@ -343,8 +343,8 @@ int main(int argc, char *argv[]){
 
 		
 		usleep(dificuldade);		
-		rep->tempo = temp
-		rep->dif = dificuldade
+		//rep->tempo = temp;
+		//rep->dif = dificuldade;
 		
 	}while(!game_over);
 
