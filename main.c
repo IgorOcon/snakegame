@@ -7,7 +7,9 @@
 
 #ifndef _BOOLEAN_H_
 #define _BOOLEAN_H_
-jjhkhkj
+
+#define ALT 25
+#define LARG 35
 
 typedef enum{
 	false,
@@ -29,16 +31,23 @@ typedef enum{
 	ESQ, DIR, CIM, BAI
 }Direcao;
 
+typedef struct replay{
+	int dif;
+	int dir;
+	int tempo;
+}replay;
+
 boolean game_over;
 boolean precisa_de_comida;
 snake* cobra = NULL;
 snake comida;
+replay* rep;
 int altura, largura;
 char ** tela;
 int pontos = 0;
 int dificuldade;
 
-/*	FUNï¿½ï¿½ES DE TELA	 */
+/*	FUNCOES DE TELA	 */
 
 char** tela_ini(){
 	int i;
@@ -92,7 +101,7 @@ void plot_snake(char** t, snake* s){
 }
 
 
-/*		FUNï¿½ï¿½ES DA COBRA	*/
+/*		FUNCOES DA COBRA	*/
 void snake_inicia(int tam){
 
 	int i, count;
@@ -119,7 +128,7 @@ void snake_libera(){
 	}while(aux != cobra);
 }
 
-//funï¿½ï¿½o que movimentarï¿½ a cobra
+//funcoes para movimentar a cobra
 void mov_cobra(Direcao d){
 
 	snake* i = cobra->prev;
@@ -150,7 +159,7 @@ void mov_cobra(Direcao d){
 /*JOGO*/
 
 void gera_comida(){
-	int n_livre = 0; //armazena quantos espaï¿½os livres estï¿½o disponï¿½veis
+	int n_livre = 0; //armazena quantos espacos livres estao disponiveis
 	int i, j;
 
 	int *ys = (int*)malloc(sizeof(int)*altura*largura);
@@ -263,13 +272,10 @@ int main(int argc, char *argv[]){
 	game_over = false;
 	precisa_de_comida = true;
 
-	printf("Altura: "); scanf("%d", &altura);
-	printf("Largura: "); scanf("%d", &largura);
-
-	if(altura <= ALT_LARG_MIN || largura <= ALT_LARG_MIN){
-		printf("ERRO, tamanho mt pequeno!\n");
-		exit(1);
-	}
+	
+	//definição da altura e largura da tela
+	altura = ALT;
+	largura = LARG;
 
 	tela = tela_ini();
 	plot_moldura(tela);
@@ -317,9 +323,10 @@ int main(int argc, char *argv[]){
 		}
 
 		//movimenta a cobra
+		rep->dir = dir;
 		mov_cobra(dir);
 
-		//condiï¿½ï¿½es de "morte"
+		//condicoes de "morte"
 		game_conditions();
 
 		//desenha a moldura
@@ -336,12 +343,14 @@ int main(int argc, char *argv[]){
 
 		
 		usleep(dificuldade);		
-
+		rep->tempo = temp
+		rep->dif = dificuldade
+		
 	}while(!game_over);
 
 	printf("Game Over\n");
 	printf("Pontos: %d/%d\n", pontos, largura*altura);
-	printf("%.2lf%% do jogo concluido\n", ((double)pontos/(double)(largura*altura))*50.0);
+	printf("%.2lf%% do jogo concluido\n", ((double)pontos/(double)(largura*altura))*20.0);
 
 	snake_libera(cobra);
 	tela_libera(tela);
