@@ -32,16 +32,17 @@ typedef enum{
 }Direcao;
 
 typedef struct replay{
-	int dif;
-	int dir;
-	int tempo;
+	int dificuldade;
+	int direcao;
+	float tempo;
 }replay;
 
 boolean game_over;
 boolean precisa_de_comida;
 snake* cobra = NULL;
+replay* reply = NULL;
 snake comida;
-replay* rep;
+replay rep;
 int altura, largura;
 char ** tela;
 int pontos = 0;
@@ -193,6 +194,10 @@ void game_conditions(){
 	//A cobra bateu em alguma das paredes?
 	if(cobra->x <= 0 || cobra->x >= (largura-1) || cobra->y <= 0 || cobra->y >= (altura-1)){
 		game_over = true;
+		//pergunta_replay(); //essa funcao vai perguntar se deseja exibir o replay das jogadas
+		/*if (pergunta_replay() == 1) {
+			exibe_replay();
+			 */
 		return;
 	}
 
@@ -246,6 +251,14 @@ void menu_pause(){
 	printf("\n* 3 - Dificil                         *");
 	printf("\n* 4 - Insano                          *");
 	printf("\n***************************************\n\n\n");	
+	
+	printf("***************************************");
+	printf("\n*                                     *");
+	printf("\n* 5 - Voltar um ponto                 *");
+	printf("\n* 6 - Replay                          *");
+	printf("\n*                                     *");
+	printf("\n***************************************\n\n\n");	
+
 	tcl = getch();
 	
 	switch(tcl){
@@ -269,6 +282,7 @@ void menu_pause(){
 int main(int argc, char *argv[]){
 	dificuldade = 80000;
 	srand(time(NULL));
+	
 	game_over = false;
 	precisa_de_comida = true;
 
@@ -323,9 +337,9 @@ int main(int argc, char *argv[]){
 		}
 
 		//movimenta a cobra
-		//rep->dir = dir;
+		//reply->direcao = dir;
 		mov_cobra(dir);
-
+		
 		//condicoes de "morte"
 		game_conditions();
 
@@ -341,10 +355,9 @@ int main(int argc, char *argv[]){
 		system("cls");
 		tela_imprime(tela);	
 
-		
-		usleep(dificuldade);		
-		//rep->tempo = temp;
-		//rep->dif = dificuldade;
+		/*reply->dificuldade = dificuldade;
+		reply->tempo = reply->tempo+1;*/
+		usleep(dificuldade);
 		
 	}while(!game_over);
 
