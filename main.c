@@ -253,9 +253,9 @@ void menu_pause(){
 	printf("\n***************************************\n\n\n");	
 	
 	printf("***************************************");
-	printf("\n*                                     *");
-	printf("\n* 5 - Voltar um ponto                 *");
-	printf("\n* 6 - Replay                          *");
+	printf("\n* Desenvolvedores:                    *");
+	printf("\n* Igor Ocon - CT3009408               *");
+	printf("\n* Pedro Camargo - CT3014649           *");
 	printf("\n*                                     *");
 	printf("\n***************************************\n\n\n");	
 
@@ -278,6 +278,30 @@ void menu_pause(){
 	}	
 }
 
+void abertura(){
+	
+	system("CLS");
+				
+	printf("\n*******************************************************************");
+	printf("\n*                         JOGO DA COBRA!                          *");
+	printf("\n*                                                                 *");
+	printf("\n* Projeto feito como parte da nota da matéria de ED1 - DEZ/2022   *");
+	printf("\n* Prof. Alex Ancioto                                              *");
+	printf("\n*                                                                 *");
+	printf("\n* Desenvolvedores:                                                *");
+	printf("\n*                                                                 *");
+	printf("\n* Igor Ocon - CT3009408                                           *");
+	printf("\n* Pedro Camargo - CT3014649                                       *");
+	printf("\n*                                                                 *");
+	printf("\n* Desenvolvido e compilado com DevC++ v5.11                       *");
+	printf("\n*                                                                 *");
+	printf("\n* A qualquer momento do jogo, pressione ESC para o menu.          *");
+	printf("\n*                                                                 *");
+	printf("\n*******************************************************************\n\n\n");
+	
+	system("PAUSE");
+	return;	
+}
 
 int main(int argc, char *argv[]){
 	dificuldade = 80000;
@@ -302,6 +326,8 @@ int main(int argc, char *argv[]){
 	lin = altura/2;
 	
 	Direcao dir = ESQ;
+	
+	abertura();
 	do{
 
 		//alguma tecla foi digitada?
